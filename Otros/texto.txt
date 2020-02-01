@@ -1,0 +1,4 @@
+Nombre: Erick Castañeda Martínez
+Edad: 19
+Carrera: ISC
+Nacimiento: 2000
