@@ -18,14 +18,14 @@ int main() {
     vector<char> alfabeto;
     bool pasoPrimeraLinea = false;
     vector<Estado> estadosDelAutomata;
-
+    string cadena;
     if(miArchivo.is_open()){
 
         while (getline(miArchivo, lineaActual)) {        
             cout << lineaActual << endl;
             numeroDeEstados++;
  
-            if (!pasoPrimeraLinea){
+            if (!pasoPrimeraLinea) {
                 pasoPrimeraLinea = true;
                 cout << "Por ahora no hara nada." << endl;
             } else {
@@ -38,8 +38,11 @@ int main() {
                     if(estadoActual.esDeAceptacion)
                         i++;
 
-                    strin
-                  
+                    if(lineaActual[i] != '32'){
+                        
+                    }
+                        
+                        
                 }
                 //estadoActual.esDeAceptacion = true;
                 estadoActual.nombreEstadoActual = "q2";
@@ -65,7 +68,4 @@ int main() {
         cout << estadosDelAutomata[0].estadosConLosQueChoca[i] << " ";
     }
 
-
-
-    
 }
