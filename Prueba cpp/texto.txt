@@ -1,7 +1,5 @@
-abcdefgh
-esto
-es 
-un
-ejemplo
-de
-alfabeto
+abc
+*q0 q1 q3
+q1 q0 q2
+q2 q3 q1
+q3 q2 q0
