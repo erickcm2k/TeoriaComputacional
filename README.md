@@ -1,2 +1,3 @@
 # TeoriaComputacional
-Automatas
+
+Repositorio de la materia de Teoría Computacional

@@ -1,3 +1,0 @@
-alfabeto: 10
-estados: "qo", "q1", "q2"
-inicio: "qo"
