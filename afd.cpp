@@ -41,7 +41,36 @@ Estado obtenerDatosAFD(string textoLinea){
                 nombreEstado = "";
             }
         }
-        
     }
     return estadoActual;
  }
+
+bool perteneceAlAlfabeto(char simbolo, string alfabeto){
+    int caracteresValidos = 0;
+    for(int i = 0; i < alfabeto.length(); i++){
+        if(simbolo == (char)alfabeto[i]){
+            caracteresValidos++;
+        } 
+    }
+   if(caracteresValidos == 1){
+       return true;
+   } else {
+       return false;
+   }
+}
+
+bool cadenaEsValida(vector<Estado> estadosDelAutomata,string cadenaPrueba, string alfabeto){
+        bool esValida = false;
+        int validaciones = 0;
+
+        cout << "La cadena a evaluar es: " << cadenaPrueba;
+        for(int i = 0; i < cadenaPrueba.length(); i++){
+        // Revisar que el alfabeto sea correcto
+            if(perteneceAlAlfabeto((char)cadenaPrueba[i], alfabeto))
+                validaciones++;
+        }
+
+        validaciones == cadenaPrueba.length() ? esValida = true : esValida = false;
+
+    return esValida;
+}

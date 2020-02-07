@@ -11,5 +11,5 @@ struct Estado {
 
 string obtenerAlfabeto(string textoLinea);
 Estado obtenerDatosAFD(string textoLinea);
-
-
+bool cadenaEsValida(vector<Estado> estadosDelAutomata,string cadenaPrueba, string alfabeto);
+bool perteneceAlAlfabeto(char simbolo, string alfabeto);

@@ -28,7 +28,7 @@ int main() {
             }
         }
 
-        int numeroSimbolosAlfabeto = alfabeto.size();
+        int numeroSimbolosAlfabeto = alfabeto.length();
         numeroDeEstados--;
 
         // Se imprime toda la informacion relacionada con el automata.
@@ -49,7 +49,13 @@ int main() {
             }
             cout << "\n\n";
         }   
-
+        string cadenaPrueba = "1010";
+        if(cadenaEsValida(estadosDelAutomata, cadenaPrueba, alfabeto)){
+            cout << "Todos los caracteres de la cadena son validos. " << endl;
+        } else {
+            cout << "No todos los caracteres de la cadena son validos. " << endl;
+        }
+        
     } else {
         cout << "El archivo no se puede abrir. " << endl;
         cout << "Es posible que no exista o el nombre este mal escrito. \n" << endl;
