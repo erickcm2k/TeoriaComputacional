@@ -11,6 +11,7 @@ int main(int argc, char const *argv[])
     cout << str2.at(0) << endl;
     cout << str2.substr(0,3) << endl;
     cout << str3 << endl;
-    cout << str3.push_back('B') << endl;
+    str3.push_back('B');
+    cout << str3 << endl;
     return 0;
 }

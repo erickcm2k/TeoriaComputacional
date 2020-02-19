@@ -1,0 +1,32 @@
+informacion:
+
+        // Se imprime toda la informacion relacionada con el automata.
+
+        /*cout << "El alfabeto es: " << alfabeto << " con el cual operara el automata. " << endl;
+        cout << "Simbolos del alfabeto: " << numeroSimbolosAlfabeto << endl;
+        cout << "Numero de estados del automata: " << numeroDeEstados << endl;
+        cout << "\nDatos de todos los estados: \n" << endl;*/
+
+        cout << "Los simbolos del alfabeto son: " << endl;
+        for(int i = 0; i < automata.alfabeto.length(); i++) {
+            cout << automata.alfabeto.at(i) << endl;
+        }
+
+
+        for(int i = 0; i < estadosDelAutomata.size(); i++){
+
+            cout << "Datos del elemento numero " << i << " del automata ingresado." << endl;
+            cout << "Nombre del estado: " << estadosDelAutomata[i].nombreEstadoActual << endl;
+            cout << "Es estado de aceptacion (0/1): " << estadosDelAutomata[i].esDeAceptacion << endl;
+            cout << "Estados con los que choca: ";
+            for(int j = 0; j < estadosDelAutomata[i].estadosConLosQueChoca.size(); j++){
+                cout << estadosDelAutomata[i].estadosConLosQueChoca[j] << " ";
+            }
+            cout << "\n\n";
+        }   
+        string cadenaPrueba = "10101";
+        if(cadenaEsValida(estadosDelAutomata, cadenaPrueba, automata.alfabeto)){
+            cout << "Todos los caracteres de la cadena son validos. " << endl;
+        } else {
+            cout << "No todos los caracteres de la cadena son validos. " << endl;
+        }

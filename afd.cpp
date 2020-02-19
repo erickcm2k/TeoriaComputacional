@@ -69,7 +69,6 @@ bool cadenaEsValida(vector<Estado> estadosDelAutomata,string cadenaPrueba, strin
             if(perteneceAlAlfabeto((char)cadenaPrueba[i], alfabeto))
                 validaciones++;
         }
-
         validaciones == cadenaPrueba.length() ? esValida = true : esValida = false;
 
     return esValida;
