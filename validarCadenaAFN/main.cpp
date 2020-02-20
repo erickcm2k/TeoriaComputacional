@@ -1,5 +1,4 @@
 #include "afd.h"
-using namespace std;
 
 int main() {
 
@@ -42,25 +41,36 @@ int main() {
         for(int i = 0; i < automata.estados.size(); i++){
 
             cout << "Elemento numero " << i << " del automata ingresado." << endl;
-            cout << "Nombre estado: " << automata.estados[i].nombreEstadoActual << endl;
+            cout << "Nombre estado: " << automata.estados[i].nombreEstado << endl;
             cout << "Es de aceptacion (0/1): " << automata.estados[i].esDeAceptacion << endl;
             cout << "Estados con los que choca: ";
             for(int j = 0; j < automata.estados[i].estadosConLosQueChoca.size(); j++){
                 cout << automata.estados[i].estadosConLosQueChoca[j] << " ";
             }
-            cout << "\n\n";
+            cout << "\n";
         }   
 
         // Prueba si una cadena es valida dentro del alfabeto
-        string cadenaPrueba = "1010a1";
-        if(cadenaEsValida(automata.estados, cadenaPrueba, automata.alfabeto)){
-            cout << "\nLos simbolos de la cadena son validos. " << endl;
+        string cadenaPrueba = "00110101";
+        // if(caracteresSonValidos(automata.estados, cadenaPrueba, automata.alfabeto)){
+        //     cout << "\nLos simbolos de la cadena son validos. " << endl;
+        //     cout << "Se procedera a probar la cadena con los datos ingresados." << endl;
+        //     cadenaEsValida(automata);
+        // } else {
+        //     cout << "\nLos simbolos de la cadena no pertenecen al alfabeto. " << endl;
+        // }
+        cout << buscarPosicionCaracter('0',automata.alfabeto) << endl;
+        if(cadenaEsValida(automata, cadenaPrueba)) {
+            cout << "La cadena es correcta" << endl;
         } else {
-            cout << "\nLos simbolos de la cadena no pertenecen al alfabeto. " << endl;
+            cout << "La cadena es incorrecta" << endl;
         }
+
+
 
     } else {
         cout << "El archivo no se puede abrir. " << endl;
         cout << "Es posible que no exista o que el nombre este mal escrito. \n" << endl;
     }
+    return 0;
 }
