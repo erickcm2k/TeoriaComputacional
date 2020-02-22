@@ -11,7 +11,6 @@
     cout << "La cadena resultante es " << alfabeto << " asies" << endl;
     return alfabeto;
 }*/
-
 Estado obtenerDatosAFD(string textoLinea){
     
     string nombreEstado;
@@ -63,7 +62,7 @@ bool caracteresSonValidos(vector<Estado> estadosDelAutomata,string cadenaPrueba,
         bool esValida = false;
         int validaciones = 0;
 
-        cout << "La cadena a evaluar es: " << cadenaPrueba;
+        cout << "La cadena a evaluar es: " << cadenaPrueba << endl;
         for(int i = 0; i < cadenaPrueba.length(); i++){
         // Revisar que el alfabeto sea correcto
             if(perteneceAlAlfabeto((char)cadenaPrueba[i], alfabeto))
@@ -102,9 +101,6 @@ bool esDeAceptacion(AFD automata, int indiceEstado) {
 bool cadenaEsValida(AFD automata, string cadenaPrueba){
     int numeroEstados = automata.estados.size();
     int validaciones = 0;
-
-    cout << "Cantidad de estados: " << numeroEstados << endl;
-    cout << endl;
     string estadoInicial = automata.estados[0].nombreEstado;
     // Lineas necesarias para obtener la informacion a partir del primer caracter de la cadena de prueba.
     int indiceEstado = (int)automata.estados[0].nombreEstado.at(1) - '0';
@@ -114,11 +110,11 @@ bool cadenaEsValida(AFD automata, string cadenaPrueba){
     string estadoDestino = automata.estados[indiceEstado].estadosConLosQueChoca[indiceSimbolo];
     int estado;
     string estadoActual;
-    cout << "El simbolo a evaluar es: " << cadenaPrueba[0] << endl;
-    cout << (int)estadoInicial.at(1) - '0' << endl;
-    cout << "Simbolo recibido: " << cadenaPrueba[0] << " Posicion: " << indiceSimbolo << endl;
-    cout << "Indice del estado actual: " << indiceEstado << endl;
-    cout << "Destino -> " << estadoDestino << endl;
+    // cout << "El simbolo a evaluar es: " << cadenaPrueba[0] << endl;
+    // cout << (int)estadoInicial.at(1) - '0' << endl;
+    // cout << "Simbolo recibido: " << cadenaPrueba[0] << " Posicion: " << indiceSimbolo << endl;
+    // cout << "Indice del estado actual: " << indiceEstado << endl;
+    // cout << "Destino -> " << estadoDestino << endl;
     if(verificarEstadoPertenezca(automata, indiceEstado, estadoDestino)){
         validaciones++;
     } else {
@@ -126,7 +122,6 @@ bool cadenaEsValida(AFD automata, string cadenaPrueba){
     }
     // VERIFICAR QUE EL ESTADO DESTINO ESTE DENTRO DE LOS ESTADOS CON LOS QUE 
     // COLISIONAN CON EL ESTADO ACTUAL --- PRACTICAMENTE LISTO
-    cout << "\n" << endl;
 
     for(int i = 1; i < cadenaPrueba.length(); i++) {
         estadoActual = automata.estados[(int)estadoDestino.at(1) - '0'].nombreEstado;
@@ -134,10 +129,10 @@ bool cadenaEsValida(AFD automata, string cadenaPrueba){
         indiceEstado = (int)estadoDestino.at(1) - '0';
         estadoDestino = automata.estados[indiceEstado].estadosConLosQueChoca[indiceSimbolo];
 
-        cout << "Estado actual: " << estadoActual << endl;
-        cout << "Simbolo recibido: " << cadenaPrueba[i] << " Posicion: " << indiceSimbolo << endl;
-        cout << "Indice del estado actual: " << indiceEstado << endl;
-        cout << "Destino -> " << estadoDestino << endl;
+        // cout << "Estado actual: " << estadoActual << endl;
+        // cout << "Simbolo recibido: " << cadenaPrueba[i] << " Posicion: " << indiceSimbolo << endl;
+        // cout << "Indice del estado actual: " << indiceEstado << endl;
+        // cout << "Destino -> " << estadoDestino << endl;
 
         if(verificarEstadoPertenezca(automata, indiceEstado, estadoDestino)){
             validaciones++;
@@ -145,16 +140,15 @@ bool cadenaEsValida(AFD automata, string cadenaPrueba){
             cout << "El estado actual es invalido, revisar la tabla de transicion" << endl;
             return false;
         }        
-        cout << "\n" << endl;        
     }
 
     bool confirmacion = esDeAceptacion(automata, (int)estadoDestino.at(1) - '0');
     // VERIFICAR QUE EL ESTADO DESTINO SEA DE ACEPTACION
     
     //cout << confirmacion << endl;
-    cout << "El estado inicial es: " << estadoInicial << endl;
+    //cout << "El estado inicial es: " << estadoInicial << endl;
     // Mostrar datos finales
-    cout <<"Validaciones: " << validaciones << " Longitud cadena: " << cadenaPrueba.length() << endl;
+    //cout <<"Validaciones: " << validaciones << " Longitud cadena: " << cadenaPrueba.length() << endl;
     if(validaciones == cadenaPrueba.length() and confirmacion == true){
         return true;
     } else {
@@ -169,4 +163,113 @@ int buscarPosicionCaracter(char letra, string palabra) {
         }
     }
     return 0;
+}
+
+void imprimirInformacion(AFD automata){
+
+    for(int i = 0; i < automata.estados.size(); i++){
+
+        cout << "Elemento numero " << i << " del automata ingresado." << endl;
+        cout << "Nombre estado: " << automata.estados[i].nombreEstado << endl;
+        cout << "Es de aceptacion (0/1): " << automata.estados[i].esDeAceptacion << endl;
+        cout << "Estados a los que puede llegar: ";
+        for(int j = 0; j < automata.estados[i].estadosConLosQueChoca.size(); j++){
+            cout << automata.estados[i].estadosConLosQueChoca[j] << " ";
+        }
+     }     
+        cout << "Los simbolos del alfabeto son: " << endl;
+        for(int i = 0; i < automata.alfabeto.length(); i++) {
+            cout << automata.alfabeto.at(i) << " ";
+        }   
+        cout <<"\n" << endl;
+}
+
+/*
+Ejecución de todo
+*/
+
+void ejecutarPrograma() {
+
+    char ingresarNuevaTabla;
+    do {
+    system("cls||clear");
+    string nombreArchivo;
+    cout << "Ingresa el nombre del archivo de la tabla de transicion: "; cin >> nombreArchivo;
+    nombreArchivo += ".txt";
+    cout << endl;
+    fstream miArchivo(nombreArchivo);
+
+    string lineaActual = "";
+    int numeroDeEstados = 0;
+    //string alfabeto;
+    bool pasoPrimeraLinea = false;
+    Estado estadoActual;
+    vector<Estado> estadosObtenidos;
+    AFD automata;
+
+    if(miArchivo.is_open()){
+        while (getline(miArchivo, lineaActual)) {        
+            numeroDeEstados++;
+            if (!pasoPrimeraLinea) {
+                pasoPrimeraLinea = true;
+                //alfabeto = (string)lineaActual;//= obtenerAlfabeto(lineaActual);
+                automata.alfabeto = lineaActual;
+            } else {
+                estadoActual = obtenerDatosAFD(lineaActual);
+                estadosObtenidos.push_back(estadoActual);
+            }
+        }
+        automata.estados = estadosObtenidos;
+        numeroDeEstados--;
+
+         // Informacion unicamente
+
+        //imprimirInformacion(automata);
+        char respuesta;
+        cout << "Presione 's' si desea ver la tabla de transicion: " << endl; cin >> respuesta;
+        if(respuesta == 's' or respuesta == 'S'){
+            imprimirInformacion(automata);
+        }
+        char ingresarOtraCadena;
+        do {
+            cout << "Ingresa el nombre con el archivo de la cadena. " << endl;
+            string archivoCadenaPrueba;
+            cin >> archivoCadenaPrueba;
+            archivoCadenaPrueba += ".txt";
+            fstream miArchivo(archivoCadenaPrueba);
+            string cadenaPrueba;
+            if(miArchivo.is_open()) {
+                getline(miArchivo, cadenaPrueba);
+
+                if(caracteresSonValidos(automata.estados, cadenaPrueba, automata.alfabeto)){
+                    //cout << "\nLos simbolos de la cadena son validos. " << endl;
+                    //cout << "Se procedera a probar la cadena con los datos ingresados." << endl;
+                    cadenaEsValida(automata, cadenaPrueba);
+                } else {
+                    cout << "\nLos simbolos de la cadena no pertenecen al alfabeto. " << endl;
+                }
+                
+                if(cadenaEsValida(automata, cadenaPrueba)) {
+                    cout << "La cadena es correcta" << endl;
+                } else {
+                    cout << "La cadena es incorrecta" << endl;
+                }
+            } else {
+                  cout << "El archivo no se puede abrir. " << endl;
+                  cout << "Es posible que no exista o que el nombre este mal escrito. \n" << endl;             
+            }
+            cout << "Presione 's' si desea evaluar otra cadena." << endl;
+            cin >> ingresarOtraCadena;
+        } while(ingresarOtraCadena == 's' or ingresarOtraCadena == 'S');
+        
+    } else {
+        cout << "El archivo no se puede abrir. " << endl;
+        cout << "Es posible que no exista o que el nombre este mal escrito. \n" << endl;
+    }
+        
+    cout << "Presiona 's' si quieres ingresar otro diagrama de transicion " << endl;
+    cin >> ingresarNuevaTabla;
+
+    } while(ingresarNuevaTabla == 's' or ingresarNuevaTabla == 'S');
+    
 }

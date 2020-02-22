@@ -21,3 +21,5 @@ bool perteneceAlAlfabeto(char simbolo, string alfabeto);
 bool cadenaEsValida(AFD automata, string cadenaPrueba);
 bool verificarEstadoPertenezca(AFD automata, int indiceEstado, string nombreEstadoAComprobar);
 int buscarPosicionCaracter(char letra, string palabra);
+void imprimirInformacion(AFD automata);
+void ejecutarPrograma();
