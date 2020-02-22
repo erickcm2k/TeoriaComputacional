@@ -83,7 +83,7 @@ bool verificarEstadoPertenezca(AFD automata, int indiceEstado, string nombreEsta
         }
     }
 
-    if(verificaciones == 1) {
+    if(verificaciones > 0) {
         return true;
     } else {
         return false;
@@ -114,10 +114,11 @@ bool cadenaEsValida(AFD automata, string cadenaPrueba){
     string estadoDestino = automata.estados[indiceEstado].estadosConLosQueChoca[indiceSimbolo];
     int estado;
     string estadoActual;
+    cout << "El simbolo a evaluar es: " << cadenaPrueba[0] << endl;
     cout << (int)estadoInicial.at(1) - '0' << endl;
-    cout << indiceSimbolo << endl;
-    cout << indiceEstado << endl;
-    cout << estadoDestino << endl;
+    cout << "Simbolo recibido: " << cadenaPrueba[0] << " Posicion: " << indiceSimbolo << endl;
+    cout << "Indice del estado actual: " << indiceEstado << endl;
+    cout << "Destino -> " << estadoDestino << endl;
     if(verificarEstadoPertenezca(automata, indiceEstado, estadoDestino)){
         validaciones++;
     } else {
@@ -128,19 +129,20 @@ bool cadenaEsValida(AFD automata, string cadenaPrueba){
     cout << "\n" << endl;
 
     for(int i = 1; i < cadenaPrueba.length(); i++) {
-
         estadoActual = automata.estados[(int)estadoDestino.at(1) - '0'].nombreEstado;
         indiceSimbolo = buscarPosicionCaracter(cadenaPrueba.at(i), automata.alfabeto);
         indiceEstado = (int)estadoDestino.at(1) - '0';
         estadoDestino = automata.estados[indiceEstado].estadosConLosQueChoca[indiceSimbolo];
 
-        cout << estadoActual << endl;
-        cout << indiceSimbolo << endl;
-        cout << indiceEstado << endl;
-        cout << estadoDestino << endl;
+        cout << "Estado actual: " << estadoActual << endl;
+        cout << "Simbolo recibido: " << cadenaPrueba[i] << " Posicion: " << indiceSimbolo << endl;
+        cout << "Indice del estado actual: " << indiceEstado << endl;
+        cout << "Destino -> " << estadoDestino << endl;
+
         if(verificarEstadoPertenezca(automata, indiceEstado, estadoDestino)){
             validaciones++;
         } else {
+            cout << "El estado actual es invalido, revisar la tabla de transicion" << endl;
             return false;
         }        
         cout << "\n" << endl;        
@@ -149,12 +151,11 @@ bool cadenaEsValida(AFD automata, string cadenaPrueba){
     bool confirmacion = esDeAceptacion(automata, (int)estadoDestino.at(1) - '0');
     // VERIFICAR QUE EL ESTADO DESTINO SEA DE ACEPTACION
     
-    cout << confirmacion << endl;
+    //cout << confirmacion << endl;
     cout << "El estado inicial es: " << estadoInicial << endl;
     // Mostrar datos finales
-     cout << validaciones << endl;
-     cout << cadenaPrueba.length() << endl;
-    if(validaciones == cadenaPrueba.length()){
+    cout <<"Validaciones: " << validaciones << " Longitud cadena: " << cadenaPrueba.length() << endl;
+    if(validaciones == cadenaPrueba.length() and confirmacion == true){
         return true;
     } else {
         return false;

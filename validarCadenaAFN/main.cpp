@@ -51,7 +51,14 @@ int main() {
         }   
 
         // Prueba si una cadena es valida dentro del alfabeto
-        string cadenaPrueba = "00110101";
+        cout << "Ingresa el nombre con el archivo de prueba " << endl;
+        string archivoCadenaPrueba;
+        cin >> archivoCadenaPrueba;
+        archivoCadenaPrueba += ".txt";
+        fstream miArchivo(archivoCadenaPrueba);
+        string cadenaPrueba;
+        getline(miArchivo, cadenaPrueba);
+
         // if(caracteresSonValidos(automata.estados, cadenaPrueba, automata.alfabeto)){
         //     cout << "\nLos simbolos de la cadena son validos. " << endl;
         //     cout << "Se procedera a probar la cadena con los datos ingresados." << endl;
@@ -59,15 +66,14 @@ int main() {
         // } else {
         //     cout << "\nLos simbolos de la cadena no pertenecen al alfabeto. " << endl;
         // }
-        cout << buscarPosicionCaracter('0',automata.alfabeto) << endl;
+        
+        //cout << buscarPosicionCaracter('0',automata.alfabeto) << endl;
+
         if(cadenaEsValida(automata, cadenaPrueba)) {
             cout << "La cadena es correcta" << endl;
         } else {
             cout << "La cadena es incorrecta" << endl;
         }
-
-
-
     } else {
         cout << "El archivo no se puede abrir. " << endl;
         cout << "Es posible que no exista o que el nombre este mal escrito. \n" << endl;
