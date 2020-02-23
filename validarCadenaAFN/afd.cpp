@@ -176,6 +176,7 @@ void imprimirInformacion(AFD automata){
         for(int j = 0; j < automata.estados[i].estadosConLosQueChoca.size(); j++){
             cout << automata.estados[i].estadosConLosQueChoca[j] << " ";
         }
+        cout << endl;
      }     
         cout << "Los simbolos del alfabeto son: " << endl;
         for(int i = 0; i < automata.alfabeto.length(); i++) {
