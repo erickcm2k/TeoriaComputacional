@@ -1,10 +1,7 @@
-from point import Point
-from point import getKNN
-from point import getEuclideanDistance
-from point import getColor
-'''class Point:
+import math
+class Point:
 
-    def __init__(self, x, y, *color):
+    def __init__(self, x, y, color):
         self.x = x
         self.y = y
         self.color = color
@@ -46,38 +43,4 @@ def getColor(knns):
             families[knns[i][1]] = 1
     
     families = sorted(families.items(), key = lambda x: x[1], reverse = True)
-    return families[0][0]'''
-    # color = str(families[0][0])
-    # b = "()',"
-    # for char in b:
-    #     color = color.replace(char,"")
-
-    # return color
-
-p1 = Point(8, 2, "red")
-p2 = Point(4, 3, "blue")
-p3 = Point(9, 5, "red")
-p4 = Point(5, 8, "blue")
-p5 = Point(5, 2, "red")
-p6 = Point(22, 4, "blue")
-p7 = Point(12, 4, "red")
-p10 = Point(11, 20)
-
-points = []
-points.append(p1)
-points.append(p2)
-points.append(p3)
-points.append(p4)
-points.append(p5)
-points.append(p6)
-points.append(p7)
-
-distances = getKNN(p10, 5, points)
-for distance in distances:
-    print(distance)
-
-p10.color = getColor(distances)
-points.append(p10)
-for point in points:
-    print(f'({point.x} , {point.y}) {point.color}')
-
+    return families[0][0]
