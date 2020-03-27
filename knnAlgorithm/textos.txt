@@ -1,0 +1,17 @@
+# p1 = Point(8, 2, "red")
+# p2 = Point(4, 3, "blue")
+# p3 = Point(9, 5, "red")
+# p4 = Point(5, 8, "blue")
+# p5 = Point(5, 2, "red")
+# p6 = Point(22, 4, "blue")
+# p7 = Point(12, 4, "red")
+# p10 = Point(11, 20)
+
+# points = []
+# points.append(p1)
+# points.append(p2)
+# points.append(p3)
+# points.append(p4)
+# points.append(p5)
+# points.append(p6)
+# points.append(p7)

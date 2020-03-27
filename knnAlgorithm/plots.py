@@ -1,4 +1,5 @@
 import matplotlib.pyplot as plt
+import matplotlib.patches as mpatches
 import numpy as np
 import csv
 import math
@@ -34,7 +35,7 @@ sevenY = []
 
 for i in range(len(points)):
     #print(f'{points[i].x} {points[i].y} {points[i].color}')
-    if points[i].color == '1':
+    if int(points[i].color) == 1:
         oneX.append(float(points[i].x))
         oneY.append(float(points[i].y))
     elif points[i].color == '5':
@@ -54,7 +55,7 @@ print(sevenY)
 
 plt.plot(oneX, oneY, 'bo')
 plt.plot(fiveX, fiveY, 'go')
-plt.plot(sevenX, sevenY, 'ro')
-plt.ylabel('some numbers')
-plt.xlabel('some numbers')
+plt.plot(sevenX, sevenY, 'ro')  
+# plt.ylabel('Y')
+# plt.xlabel('X')
 plt.show()
