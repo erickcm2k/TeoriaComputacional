@@ -133,4 +133,4 @@ if __name__ == "__main__":
     plt.plot(sevenX, sevenY, 'ro')  
     plt.ylabel('Erick Castañeda Martínez')
     plt.xlabel('K - Nearest Neighbours')
-    #plt.show()
+    plt.show()
