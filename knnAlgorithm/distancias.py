@@ -96,8 +96,8 @@ def checkNewPoint(newPoint, points):
 
 if __name__ == "__main__":
 
-    points = readPointsFromCSV('datasheet.txt')
-    testPoints = readTestPointsFromCSV('testDataset.txt')
+    points = readPointsFromCSV('numbers.csv')
+    testPoints = readTestPointsFromCSV('numbers-test.csv')
 
     print('\nPoints extracted from dataset: \n')
     for point in points:
@@ -132,5 +132,5 @@ if __name__ == "__main__":
     plt.plot(fiveX, fiveY, 'go')
     plt.plot(sevenX, sevenY, 'ro')  
     plt.ylabel('Erick Castañeda Martínez')
-    plt.xlabel('K - Nearest Neighbours')
+    plt.xlabel('K - Nearest Neighbors')
     plt.show()
